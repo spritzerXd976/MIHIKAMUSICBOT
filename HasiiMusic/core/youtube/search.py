@@ -51,7 +51,8 @@ class Searcher:
                         "quiet": True,
                         "noplaylist": True,
                         "extract_flat": "in_playlist",
-                        "cookiefile": cookie
+                        "cookiefile": cookie,
+                        "proxy": self._cookies.get_proxy()
                     }
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                         return ydl.extract_info(query, download=False)
@@ -86,7 +87,8 @@ class Searcher:
                     ydl_opts = {
                         "quiet": True,
                         "extract_flat": True,
-                        "cookiefile": cookie
+                        "cookiefile": cookie,
+                        "proxy": self._cookies.get_proxy()
                     }
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                         return ydl.extract_info(f"ytsearch1:{query}", download=False)
@@ -137,7 +139,8 @@ class Searcher:
                 ydl_opts = {
                     "quiet": True,
                     "extract_flat": "in_playlist",
-                    "cookiefile": cookie
+                    "cookiefile": cookie,
+                    "proxy": self._cookies.get_proxy()
                 }
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     return ydl.extract_info(url, download=False)

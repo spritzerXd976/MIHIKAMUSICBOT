@@ -24,7 +24,8 @@ async def inline_query_handler(_, query: types.InlineQuery):
             ydl_opts = {
                 "quiet": True,
                 "extract_flat": True,
-                "cookiefile": cookie
+                "cookiefile": cookie,
+                "proxy": yt.get_proxy()
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 return ydl.extract_info(f"ytsearch15:{text}", download=False)

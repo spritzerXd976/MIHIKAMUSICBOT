@@ -10,13 +10,17 @@
 import os
 import random
 import aiohttp
-from HasiiMusic import logger
+from HasiiMusic import logger, config
 
 class CookieManager:
     def __init__(self):
         self.cookies = []  # List of available cookie files
         self.checked = False  # Whether cookies directory has been checked
         self.warned = False  # Whether missing cookies warning has been shown
+
+    def get_proxy(self):
+        """Returns the configured WARP/SOCKS5 proxy URL, or None if unset."""
+        return getattr(config, "WARP_SOCKS5_PROXY", "") or None
 
     def get_cookies(self):
         if not self.checked:

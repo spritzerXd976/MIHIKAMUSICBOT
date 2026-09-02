@@ -40,6 +40,9 @@ class YouTube:
     def get_cookies(self):
         return self._cookies.get_cookies()
 
+    def get_proxy(self):
+        return self._cookies.get_proxy()
+
     async def save_cookies(self, urls: list[str]) -> None:
         await self._cookies.save_cookies(urls)
 

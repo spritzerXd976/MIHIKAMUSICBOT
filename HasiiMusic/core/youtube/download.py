@@ -56,10 +56,12 @@ class Downloader:
         # Extract live stream URL
         if is_live:
             cookie = self._cookies.get_cookies()
+            proxy = self._cookies.get_proxy()
             ydl_opts = {
                 "quiet": True,
                 "no_warnings": True,
                 "cookiefile": cookie,
+                "proxy": proxy,
                 "format": "bestaudio/best",
                 "noplaylist": True,
                 "socket_timeout": 20,
@@ -168,6 +170,7 @@ class Downloader:
             # **PERFORMANCE FIX**: Use semaphore to limit concurrent downloads
             async with self._download_semaphore:
                 cookie = self._cookies.get_cookies()
+                proxy = self._cookies.get_proxy()
                 base_opts = {
                     "outtmpl": "downloads/%(id)s.%(ext)s",
                     "quiet": True,
@@ -185,6 +188,7 @@ class Downloader:
                     "fragment_retries": 2,
                     "extractor_retries": 5,
                     "sleep_interval_requests": 1,
+                    "proxy": proxy,
                 }
 
                 if video:

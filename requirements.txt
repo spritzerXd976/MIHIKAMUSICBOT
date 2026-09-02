@@ -28,3 +28,4 @@ py-tgcalls~=2.2.11
 python-dotenv~=1.2.2
 spotipy~=2.24.0
 yt-dlp[default] @ git+https://github.com/yt-dlp/yt-dlp.git
+PySocks>=1.7.1  # SOCKS5 proxy support (WARP_SOCKS5_PROXY)

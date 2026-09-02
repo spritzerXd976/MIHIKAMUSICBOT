@@ -62,6 +62,12 @@ class Config:
         # YOUTUBE COOKIES
         self.COOKIES_URL: List[str] = self._parse_cookies()
 
+        # SOCKS5 proxy (e.g. Cloudflare WARP) routed for all yt-dlp YouTube
+        # traffic. Helps spread load / dodge IP-based rate limits - not a
+        # substitute for cookies, since the bot-check is an auth challenge,
+        # not an IP block. Leave blank to disable.
+        self.WARP_SOCKS5_PROXY: str = getenv("WARP_SOCKS5_PROXY", "").strip()
+
         # IMAGE URLS
         self.DEFAULT_THUMB: str = getenv(
             "DEFAULT_THUMB",
